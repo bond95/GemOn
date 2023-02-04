@@ -3,20 +3,67 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
 
-public class DragDrop : MonoBehaviour, IPointerDownHandler
+public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
-    // Start is called before the first frame update
-    void Start()
+    [SerializeField] private Canvas canvas;
+
+
+    private RectTransform rectTransform;
+    private UnityEngine.Vector2 initialPosition;
+    private CanvasGroup canvasGroup;
+    private float speed = 50;
+    private bool returning = false;
+    private bool dragged = false;
+
+
+
+    private void Awake()
     {
-        
+        rectTransform = GetComponent<RectTransform>();
+        canvasGroup = GetComponent<CanvasGroup>();
     }
 
-    // Update is called once per frame
     void Update()
     {
-        
+        if (this.returning == false) {
+            return;
+        }
+        Vector2 position = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y);
+        if (this.initialPosition != position) {
+            rectTransform.anchoredPosition = UnityEngine.Vector2.MoveTowards(rectTransform.anchoredPosition, this.initialPosition, speed * Time.deltaTime);
+        } else if (this.initialPosition == position) {
+            this.returning = false;
+            this.dragged = false;
+        }
     }
-    public void OnPointerDown(PointerEventData pointerEventData) {
-      Debug.Log("Work????");
-    }   
+
+    public void OnBeginDrag(PointerEventData eventData)
+    {
+        this.dragged = true;
+        this.initialPosition = rectTransform.anchoredPosition;
+        canvasGroup.blocksRaycasts = false;
+        canvasGroup.alpha = .6f;
+    }
+
+    public void OnDrag(PointerEventData eventData)
+    {
+        rectTransform.anchoredPosition += eventData.delta / canvas.scaleFactor;
+    }
+
+    public void Return() {
+        if (this.dragged) {
+            rectTransform.anchoredPosition = this.initialPosition;
+            this.dragged = false;
+        }
+    }
+
+    public void OnEndDrag(PointerEventData eventData)
+    {
+        this.returning = true;
+        canvasGroup.blocksRaycasts = true;
+        canvasGroup.alpha = 1f;
+
+    }
+
+
 }
