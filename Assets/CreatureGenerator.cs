@@ -39,7 +39,7 @@ public class CreatureGenerator : MonoBehaviour
 		this.state[data[0]] = data[1];
 	}
 
-    void GenerateCreature(int color, int body, int hair, int face, int ear) {
+    void GenerateCreature(int body, int hair, int ear, int face, int color) {
     	GameObject body_obj = gameObject.transform.Find("Body").gameObject;
 		GameObject hair_obj = gameObject.transform.Find("Hair").gameObject;
 		GameObject ear_obj = gameObject.transform.Find("Ear").gameObject;
