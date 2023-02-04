@@ -11,7 +11,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private RectTransform rectTransform;
     private UnityEngine.Vector2 initialPosition;
     private CanvasGroup canvasGroup;
-    private float speed = 50;
+    private float speed = 5f;
     private bool returning = false;
     private bool dragged = false;
 
@@ -30,7 +30,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         }
         Vector2 position = new Vector2(rectTransform.anchoredPosition.x, rectTransform.anchoredPosition.y);
         if (this.initialPosition != position) {
-            rectTransform.anchoredPosition = UnityEngine.Vector2.MoveTowards(rectTransform.anchoredPosition, this.initialPosition, speed * Time.deltaTime);
+            rectTransform.anchoredPosition = UnityEngine.Vector2.MoveTowards(rectTransform.anchoredPosition, this.initialPosition, speed);
         } else if (this.initialPosition == position) {
             this.returning = false;
             this.dragged = false;
