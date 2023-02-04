@@ -496,6 +496,7 @@ GameObject:
   - component: {fileID: 306164901}
   - component: {fileID: 306164900}
   - component: {fileID: 306164902}
+  - component: {fileID: 306164903}
   m_Layer: 0
   m_Name: BlueBall
   m_TagString: Untagged
@@ -574,6 +575,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+--- !u!225 &306164903
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 306164898}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &363362902
 GameObject:
   m_ObjectHideFlags: 0
@@ -586,6 +599,7 @@ GameObject:
   - component: {fileID: 363362905}
   - component: {fileID: 363362904}
   - component: {fileID: 363362906}
+  - component: {fileID: 363362907}
   m_Layer: 0
   m_Name: YellowBall
   m_TagString: Untagged
@@ -664,6 +678,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+--- !u!225 &363362907
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 363362902}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &409894228
 GameObject:
   m_ObjectHideFlags: 0
@@ -1202,6 +1228,7 @@ GameObject:
   - component: {fileID: 518839884}
   - component: {fileID: 518839883}
   - component: {fileID: 518839885}
+  - component: {fileID: 518839886}
   m_Layer: 0
   m_Name: RedBall
   m_TagString: Untagged
@@ -1280,6 +1307,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+--- !u!225 &518839886
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 518839881}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &519420028
 GameObject:
   m_ObjectHideFlags: 0
@@ -1564,6 +1603,7 @@ GameObject:
   - component: {fileID: 868464262}
   - component: {fileID: 868464261}
   - component: {fileID: 868464263}
+  - component: {fileID: 868464264}
   m_Layer: 0
   m_Name: GreenBall
   m_TagString: Untagged
@@ -1642,6 +1682,18 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+--- !u!225 &868464264
+CanvasGroup:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 868464259}
+  m_Enabled: 1
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
+  m_IgnoreParentGroups: 0
 --- !u!1 &869992168
 GameObject:
   m_ObjectHideFlags: 0
