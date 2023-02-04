@@ -21,17 +21,23 @@ public class CreatureGenerator : MonoBehaviour
 	public List <ColoredSprites> ears = new List<ColoredSprites>();
 	public List <BodyTypeColoredSprites> hairs = new List<BodyTypeColoredSprites>();
 
+	public int[] state = new int[5];
+
     // Start is called before the first frame update
     void Start()
     {
-        this.GenerateCreature(0, 0, 0, 0, 0);
     }
 
     // Update is called once per frame
     void Update()
     {
-        
+        this.GenerateCreature(this.state[0], this.state[1], this.state[2], this.state[3], this.state[4]);
     }
+
+	public void SetState(int[] data)
+	{
+		this.state[data[0]] = data[1];
+	}
 
     void GenerateCreature(int color, int body, int hair, int face, int ear) {
     	GameObject body_obj = gameObject.transform.Find("Body").gameObject;

@@ -6,7 +6,7 @@ using UnityEngine.EventSystems;
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
-
+    [SerializeField] private int weight;
 
     private RectTransform rectTransform;
     private UnityEngine.Vector2 initialPosition;
@@ -55,6 +55,10 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
             rectTransform.anchoredPosition = this.initialPosition;
             this.dragged = false;
         }
+    }
+
+    public int GetWeight() {
+        return this.weight;
     }
 
     public void OnEndDrag(PointerEventData eventData)
