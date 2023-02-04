@@ -575,6 +575,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  text: {fileID: 2103009551}
   weight: 0
   count: 1
 --- !u!225 &306164903
@@ -680,6 +681,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  text: {fileID: 1022727167}
   weight: 2
   count: 1
 --- !u!225 &363362907
@@ -1312,6 +1314,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  text: {fileID: 1792622140}
   weight: 3
   count: 1
 --- !u!225 &518839886
@@ -1787,6 +1790,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  text: {fileID: 304897360}
   weight: 1
   count: 1
 --- !u!225 &868464264

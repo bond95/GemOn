@@ -2,10 +2,13 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.EventSystems;
+using TMPro;
+using System;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
+    [SerializeField] private TMP_Text text;
     [SerializeField] private int weight;
     [SerializeField] private int count;
 
@@ -23,6 +26,15 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     {
         rectTransform = GetComponent<RectTransform>();
         canvasGroup = GetComponent<CanvasGroup>();
+    }
+
+    private void updateCount() {
+        this.text.text = "x" + this.count.ToString();
+    }
+
+    void Start()
+    {
+        updateCount();
     }
 
     void Update()
@@ -57,7 +69,8 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     public void Return() {
         if (this.count > 0) {
-            this.count--;
+            Math.Max(this.count--, 0);
+            updateCount();
         }
         if (this.dragged) {
             rectTransform.anchoredPosition = this.initialPosition;
