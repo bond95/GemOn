@@ -39,7 +39,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     private void checkRemainig() {
         var creature_state = this.creature.GetComponent<CreatureGenerator>();
         var remaining = Enumerable.Select(creature_state.state , (item, i) => new { Item = item, Index = i })
-                .Where(x => x.Item != creature_state.finish_state[x.Index] && creature_state.finish_state[x.Index] == this.weight);
+                .Where(x => !Enumerable.Contains(creature_state.finish_state[x.Index].states, x.Item) && Enumerable.Contains(creature_state.finish_state[x.Index].states, this.weight));
         var left_to_set = Enumerable.Count(remaining);
         if (left_to_set > this.count) {
             canvas.BroadcastMessage("Finish", false);

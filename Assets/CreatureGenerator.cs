@@ -5,6 +5,7 @@ using UnityEngine.UI;
 using System;
 using System.Linq;
 
+
 public class CreatureGenerator : MonoBehaviour
 {
 	[Serializable]
@@ -17,14 +18,19 @@ public class CreatureGenerator : MonoBehaviour
 	    public int bodyType;
 	    public List <ColoredSprites> sprites;
 	}
+
+	[Serializable]
+	public struct ListOfInt {
+	    public List <int> states;
+	}
 	public List <ColoredSprites> bodies = new List<ColoredSprites>();
 	public List <Sprite> faces = new List<Sprite>();
 	public List <ColoredSprites> ears = new List<ColoredSprites>();
 	public List <BodyTypeColoredSprites> hairs = new List<BodyTypeColoredSprites>();
+	public List <ListOfInt> finish_state = new List<ListOfInt>();
 	[SerializeField] private Canvas canvas;
 
 	public int[] state = new int[5];
-	public int[] finish_state = new int[5];
 	public bool tutorial;
 
 
@@ -41,22 +47,27 @@ public class CreatureGenerator : MonoBehaviour
 
 	public void SetState(int[] data)
 	{
-		bool already_correct = this.state[data[0]] == this.finish_state[data[0]];
+		
+		bool already_correct = Enumerable.Contains(this.finish_state[data[0]].states, this.state[data[0]]);
 		this.state[data[0]] = data[1];
 		if (tutorial) { return; }
 
-		if (Enumerable.SequenceEqual(this.state, this.finish_state)) {
+		bool equal = false;
+		foreach (var state in Enumerable.Select(this.state, (item, i) => new { Item = item, Index = i })) {
+			equal = equal && Enumerable.Contains(this.finish_state[state.Index].states, state.Item);
+		}
+		if (equal) {
 			canvas.BroadcastMessage("Finish", true);
 			return;
 		}
 
-		if (this.state[data[0]] == this.finish_state[data[0]] && !already_correct) {
+		if (Enumerable.Contains(this.finish_state[data[0]].states, data[1]) && !already_correct) {
 			Debug.Log("Match " + data[0].ToString() + " with " + data[1].ToString());
 			canvas.BroadcastMessage("Satisfy");
 			return;
 		}
 
-		if (this.state[data[0]] != this.finish_state[data[0]] && already_correct) {
+		if (!Enumerable.Contains(this.finish_state[data[0]].states, data[1]) && already_correct) {
 			canvas.BroadcastMessage("Frustrate");
 			return;
 		}
