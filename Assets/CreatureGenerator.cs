@@ -61,7 +61,7 @@ public class CreatureGenerator : MonoBehaviour
 			return;
 		}
 
-		if (Enumerable.Contains(this.finish_state[data[0]].states, data[1]) && !already_correct) {
+		if (Enumerable.Contains(this.finish_state[data[0]].states, data[1])) {
 			Debug.Log("Match " + data[0].ToString() + " with " + data[1].ToString());
 			canvas.BroadcastMessage("Satisfy");
 			return;
