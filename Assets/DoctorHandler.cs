@@ -45,4 +45,7 @@ public class DoctorHandler : MonoBehaviour
     }
 
  
+    public void HappyDoctor() {
+        gameObject.GetComponent<Image>().sprite = win_loose[happy];   
+    }
 }

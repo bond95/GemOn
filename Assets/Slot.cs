@@ -10,6 +10,8 @@ public class Slot : MonoBehaviour, IDropHandler
 
     [SerializeField] private Canvas canvas;
     [SerializeField] private int index;
+    [SerializeField] private int indexDialog = -1;
+    [SerializeField] private DialogScript dialog;
 
 
     public void OnDrop(PointerEventData eventData)
@@ -19,6 +21,9 @@ public class Slot : MonoBehaviour, IDropHandler
             canvas.BroadcastMessage("SetState", data);
             eventData.pointerDrag.GetComponent<DragDrop>().Return();
             gameObject.GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
+            if (indexDialog > -1) {
+                dialog.GoToDialogIndex(indexDialog);
+            }
         }
     }
 }
