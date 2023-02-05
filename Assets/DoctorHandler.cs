@@ -9,6 +9,9 @@ public class DoctorHandler : MonoBehaviour
     private int happy = 0, sad = 1;
     [SerializeField] private List <Sprite> win_loose;
     [SerializeField] private Sprite default_state;
+    [SerializeField] private AudioSource audioSource;
+    [SerializeField] private AudioClip winClip;
+    [SerializeField] private AudioClip looseClip;
 
     private float moody = 0.0f;
 
@@ -28,6 +31,11 @@ public class DoctorHandler : MonoBehaviour
 
     public void Finish(bool win)
     {
+        if (win) {
+            audioSource.PlayOneShot(winClip, 0.5f);
+        } else {
+            audioSource.PlayOneShot(looseClip, 0.5f);
+        }
         gameObject.GetComponent<Image>().sprite = win ? win_loose[happy] : win_loose[sad];
     }
 
