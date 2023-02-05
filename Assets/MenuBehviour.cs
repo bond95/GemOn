@@ -34,4 +34,7 @@ public class MenuBehviour : MonoBehaviour
     public void GoToMenu() {
     	StartCoroutine(WaitForSceneLoad(0));
     }
+    public void GoToAuthors() {
+    	StartCoroutine(WaitForSceneLoad(4));
+    }
 }
