@@ -42,7 +42,7 @@ public class DialogScript : MonoBehaviour
     }
 
     void GoToNextDialog() {
-    	if (currentDialogIndex > -1 && (dialogs.Count > currentDialogIndex + 1 || (dialogs[currentDialogIndex + 1].startImmidiately && dialogs[currentDialogIndex].AfterTimeoutAction != null))) {
+    	if (currentDialogIndex > -1 && (dialogs.Count <= currentDialogIndex + 1 || (dialogs[currentDialogIndex + 1].startImmidiately && dialogs[currentDialogIndex].AfterTimeoutAction != null))) {
 			dialogs[currentDialogIndex].AfterTimeoutAction.Invoke();
     	}
     	if (dialogs[currentDialogIndex + 1].startImmidiately && timeDelta <= 0 && dialogs.Count > currentDialogIndex + 1) {

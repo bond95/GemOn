@@ -652,6 +652,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  creature: {fileID: 409894228}
   text: {fileID: 2103009551}
   weight: 0
   count: 10
@@ -758,6 +759,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  creature: {fileID: 409894228}
   text: {fileID: 1022727167}
   weight: 2
   count: 10
@@ -986,7 +988,9 @@ MonoBehaviour:
       - {fileID: 21300000, guid: 84d1e942e45767cacbc675a504eb1f8f, type: 3}
       - {fileID: 21300000, guid: e22c612eedae0dd5188b7d696345a2ba, type: 3}
       - {fileID: 21300000, guid: fc4f97ff4e7752521b4d91e00eabb67f, type: 3}
+  canvas: {fileID: 1296358161}
   state: 0000000000000000000000000000000000000000
+  finish_state: 0000000000000000000000000000000000000000
 --- !u!1 &431684751
 GameObject:
   m_ObjectHideFlags: 0
@@ -1391,6 +1395,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  creature: {fileID: 409894228}
   text: {fileID: 1792622140}
   weight: 3
   count: 10
@@ -1871,6 +1876,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   canvas: {fileID: 1296358161}
+  creature: {fileID: 409894228}
   text: {fileID: 304897360}
   weight: 1
   count: 10
@@ -3013,7 +3019,7 @@ MonoBehaviour:
         m_Calls:
         - m_Target: {fileID: 1507921510}
           m_TargetAssemblyTypeName: DoctorHandler, Assembly-CSharp
-          m_MethodName: HappyDoctor
+          m_MethodName: Satisfy
           m_Mode: 1
           m_Arguments:
             m_ObjectArgument: {fileID: 0}
@@ -3272,6 +3278,7 @@ MonoBehaviour:
   win_loose:
   - {fileID: 21300000, guid: 3bd5994b67a3342d7aac7c7135f5d7d6, type: 3}
   - {fileID: 21300000, guid: 15839b879656642419cb12310528234f, type: 3}
+  default_state: {fileID: 0}
 --- !u!1 &1514038894
 GameObject:
   m_ObjectHideFlags: 0
