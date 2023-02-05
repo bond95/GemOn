@@ -52,7 +52,7 @@ public class CreatureGenerator : MonoBehaviour
 		this.state[data[0]] = data[1];
 		if (tutorial) { return; }
 
-		bool equal = false;
+		bool equal = true;
 		foreach (var state in Enumerable.Select(this.state, (item, i) => new { Item = item, Index = i })) {
 			equal = equal && Enumerable.Contains(this.finish_state[state.Index].states, state.Item);
 		}
