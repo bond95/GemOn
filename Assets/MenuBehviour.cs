@@ -16,14 +16,22 @@ public class MenuBehviour : MonoBehaviour
     {
     }
 
+    private IEnumerator WaitForSceneLoad(int scene) {
+		yield return new WaitForSeconds(0.5f);
+		SceneManager.LoadScene(scene);
+
+	}
+
     public void ExitGame() {
     	Application.Quit();
     }
 
     public void GoToLevels() {
-    	SceneManager.LoadScene(1);
+
+    	// SceneManager.LoadScene(1);
+    	StartCoroutine(WaitForSceneLoad(1));
     }
     public void GoToMenu() {
-    	SceneManager.LoadScene(0);
+    	StartCoroutine(WaitForSceneLoad(0));
     }
 }

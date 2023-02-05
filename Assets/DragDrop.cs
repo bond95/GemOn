@@ -14,6 +14,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
     [SerializeField] private TMP_Text text;
     [SerializeField] private int weight;
     [SerializeField] private int count;
+    [SerializeField] private AudioSource audioSource;
 
 
     private RectTransform rectTransform;
@@ -71,6 +72,9 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         this.initialPosition = rectTransform.anchoredPosition;
         canvasGroup.blocksRaycasts = false;
         canvasGroup.alpha = .6f;
+        if (audioSource) {
+            audioSource.Play();
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
