@@ -4,10 +4,13 @@ using UnityEngine;
 using UnityEngine.EventSystems;
 using TMPro;
 using System;
+using System.Linq;
 
 public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDragHandler
 {
     [SerializeField] private Canvas canvas;
+    [SerializeField] private GameObject creature;
+
     [SerializeField] private TMP_Text text;
     [SerializeField] private int weight;
     [SerializeField] private int count;
@@ -30,6 +33,17 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
 
     private void updateCount() {
         this.text.text = "x" + this.count.ToString();
+    }
+
+    private void checkRemainig() {
+        var creature_state = this.creature.GetComponent<CreatureGenerator>();
+        var remaining = Enumerable.Select(creature_state.state , (item, i) => new { Item = item, Index = i })
+                .Where(x => x.Item != creature_state.finish_state[x.Index]);
+        var left_to_set = Enumerable.Count(remaining, n => n.Item == this.weight);
+
+        if (left_to_set > this.count) {
+            canvas.BroadcastMessage("Finish", false);
+        }
     }
 
     void Start()
@@ -71,6 +85,7 @@ public class DragDrop : MonoBehaviour, IBeginDragHandler, IEndDragHandler, IDrag
         if (this.count > 0) {
             Math.Max(this.count--, 0);
             updateCount();
+            checkRemainig();
         }
         if (this.dragged) {
             rectTransform.anchoredPosition = this.initialPosition;

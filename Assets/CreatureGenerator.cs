@@ -3,6 +3,7 @@ using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
 using System;
+using System.Linq;
 
 public class CreatureGenerator : MonoBehaviour
 {
@@ -20,8 +21,11 @@ public class CreatureGenerator : MonoBehaviour
 	public List <Sprite> faces = new List<Sprite>();
 	public List <ColoredSprites> ears = new List<ColoredSprites>();
 	public List <BodyTypeColoredSprites> hairs = new List<BodyTypeColoredSprites>();
+	[SerializeField] private Canvas canvas;
 
 	public int[] state = new int[5];
+	public int[] finish_state = new int[5];
+
 
     // Start is called before the first frame update
     void Start()
@@ -36,8 +40,25 @@ public class CreatureGenerator : MonoBehaviour
 
 	public void SetState(int[] data)
 	{
+		bool already_correct = this.state[data[0]] == this.finish_state[data[0]];
 		this.state[data[0]] = data[1];
-	}
+		if (Enumerable.SequenceEqual(this.state, this.finish_state)) {
+			canvas.BroadcastMessage("Finish", true);
+			return;
+		}
+
+		if (this.state[data[0]] == this.finish_state[data[0]] && !already_correct) {
+			Debug.Log("Match " + data[0].ToString() + " with " + data[1].ToString());
+			canvas.BroadcastMessage("Satisfy");
+			return;
+		}
+
+		if (this.state[data[0]] != this.finish_state[data[0]] && already_correct) {
+			canvas.BroadcastMessage("Frustrate");
+			return;
+		}
+
+ 	}
 
     void GenerateCreature(int body, int hair, int ear, int face, int color) {
     	GameObject body_obj = gameObject.transform.Find("Body").gameObject;
