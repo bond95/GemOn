@@ -51,6 +51,7 @@ public class DialogScript : MonoBehaviour
     		timeDelta = dialogs[currentDialogIndex].timeout;
     		var dialog = dialogs[currentDialogIndex];
     		dialog.dialogWasDone = true;
+			dialogs[currentDialogIndex] = dialog;
     	}
     }
 
@@ -64,6 +65,7 @@ public class DialogScript : MonoBehaviour
     		timeDelta = dialogs[currentDialogIndex].timeout;
     		var dialog = dialogs[currentDialogIndex];
     		dialog.dialogWasDone = true;
+			dialogs[currentDialogIndex] = dialog;
     	}
     }
 }
