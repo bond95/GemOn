@@ -2,6 +2,7 @@ using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using UnityEngine.SceneManagement;
 
 
 public class DoctorHandler : MonoBehaviour
@@ -37,6 +38,10 @@ public class DoctorHandler : MonoBehaviour
             audioSource.PlayOneShot(looseClip, 0.5f);
         }
         gameObject.GetComponent<Image>().sprite = win ? win_loose[happy] : win_loose[sad];
+        if (MainManager.Instance != null && win) {
+            MainManager.Instance.UnlockNextLevel();
+        }
+        SceneManager.LoadScene(1);
     }
 
     public void Satisfy()
