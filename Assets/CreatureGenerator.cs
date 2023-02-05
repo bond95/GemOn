@@ -25,6 +25,7 @@ public class CreatureGenerator : MonoBehaviour
 
 	public int[] state = new int[5];
 	public int[] finish_state = new int[5];
+	public bool tutorial;
 
 
     // Start is called before the first frame update
@@ -42,6 +43,8 @@ public class CreatureGenerator : MonoBehaviour
 	{
 		bool already_correct = this.state[data[0]] == this.finish_state[data[0]];
 		this.state[data[0]] = data[1];
+		if (tutorial) { return; }
+
 		if (Enumerable.SequenceEqual(this.state, this.finish_state)) {
 			canvas.BroadcastMessage("Finish", true);
 			return;

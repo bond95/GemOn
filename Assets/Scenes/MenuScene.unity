@@ -1210,7 +1210,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: afd9dd8c1c3674b84abd103642234d9e, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  unlocked_levels: 
+  unlocked_levels: 02000000
   current_level: 0
 --- !u!4 &1239466235
 Transform:

@@ -8,11 +8,14 @@ using UnityEngine.SceneManagement;
 public class DoctorHandler : MonoBehaviour
 {
     private int happy = 0, sad = 1;
+    public bool tutorial;
     [SerializeField] private List <Sprite> win_loose;
     [SerializeField] private Sprite default_state;
     [SerializeField] private AudioSource audioSource;
     [SerializeField] private AudioClip winClip;
     [SerializeField] private AudioClip looseClip;
+	[SerializeField] private DialogScript dialog;
+
 
     private float moody = 0.0f;
 
@@ -41,7 +44,12 @@ public class DoctorHandler : MonoBehaviour
         if (MainManager.Instance != null && win) {
             MainManager.Instance.UnlockNextLevel();
         }
-        SceneManager.LoadScene(1);
+        if (tutorial) { return; }
+        if (win && dialog != null) {
+            dialog.GoToDialogIndex(happy);
+        } else {
+            dialog.GoToDialogIndex(sad);
+        }
     }
 
     public void Satisfy()
@@ -60,5 +68,9 @@ public class DoctorHandler : MonoBehaviour
  
     public void HappyDoctor() {
         gameObject.GetComponent<Image>().sprite = win_loose[happy];   
+    }
+
+    public void GoToLevels() {
+    	SceneManager.LoadScene(1);
     }
 }
