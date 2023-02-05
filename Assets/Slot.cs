@@ -15,9 +15,9 @@ public class Slot : MonoBehaviour, IDropHandler
     public void OnDrop(PointerEventData eventData)
     {
         if (eventData.pointerDrag != null) {
-            eventData.pointerDrag.GetComponent<DragDrop>().Return();
             int[] data = new int[] {this.index, eventData.pointerDrag.GetComponent<DragDrop>().GetWeight()};
             canvas.BroadcastMessage("SetState", data);
+            eventData.pointerDrag.GetComponent<DragDrop>().Return();
             gameObject.GetComponent<Image>().sprite = eventData.pointerDrag.GetComponent<Image>().sprite;
         }
     }
