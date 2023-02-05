@@ -22,7 +22,7 @@ public class DialogScript : MonoBehaviour
 	public List <Dialog> dialogs = new List<Dialog>();
 
 	private double timeDelta = 0.0;
-	private int currentDialogIndex = -1;
+	public int currentDialogIndex = -1;
     // Start is called before the first frame update
     void Start()
     {
@@ -45,7 +45,7 @@ public class DialogScript : MonoBehaviour
     	if (currentDialogIndex > -1 && (dialogs.Count <= currentDialogIndex + 1 || (dialogs[currentDialogIndex + 1].startImmidiately && dialogs[currentDialogIndex].AfterTimeoutAction != null))) {
 			dialogs[currentDialogIndex].AfterTimeoutAction.Invoke();
     	}
-    	if (dialogs[currentDialogIndex + 1].startImmidiately && timeDelta <= 0 && dialogs.Count > currentDialogIndex + 1) {
+    	if (dialogs.Count > currentDialogIndex + 1 && dialogs[currentDialogIndex + 1].startImmidiately && timeDelta <= 0) {
     		currentDialogIndex++;
     		this.text.text = dialogs[currentDialogIndex].text;
     		timeDelta = dialogs[currentDialogIndex].timeout;

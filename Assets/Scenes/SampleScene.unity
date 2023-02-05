@@ -3222,10 +3222,10 @@ MonoBehaviour:
   - {fileID: 21300000, guid: 3bd5994b67a3342d7aac7c7135f5d7d6, type: 3}
   - {fileID: 21300000, guid: 15839b879656642419cb12310528234f, type: 3}
   default_state: {fileID: 21300000, guid: 6c7f86a4a68c44d2c88c794f1214aafc, type: 3}
-  dialog: {fileID: 1777312466}
   audioSource: {fileID: 1507921511}
   winClip: {fileID: 8300000, guid: 99de973a1db04dc2fae1bfd2febc7f3a, type: 3}
   looseClip: {fileID: 8300000, guid: 5e3573e37f86564aa9eea56ddea35572, type: 3}
+  dialog: {fileID: 1777312466}
 --- !u!82 &1507921511
 AudioSource:
   m_ObjectHideFlags: 0
@@ -3858,7 +3858,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: f35be737449417d2faca883ad129e3a3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  text: {fileID: 0}
+  text: {fileID: 1385292483}
   dialogs:
   - timeout: 5
     text: Great! You've got it! Let's move on to the next one.
@@ -3937,6 +3937,7 @@ MonoBehaviour:
             m_StringArgument: 
             m_BoolArgument: 0
           m_CallState: 0
+  currentDialogIndex: 1
 --- !u!1 &1787833270
 GameObject:
   m_ObjectHideFlags: 0
